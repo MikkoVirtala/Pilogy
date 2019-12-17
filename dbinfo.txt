@@ -1,0 +1,3 @@
+database host: MongoDB Atlas cloud
+username: mikko.a.virtala@gmail.com
+db password: rMlXlmZqQ28PTBcoMrSq
