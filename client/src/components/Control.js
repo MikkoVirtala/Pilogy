@@ -60,7 +60,7 @@ const Control = props => {
   const handleCreatePicture = () => {
     dispatch(setLoadingPicture(true))
     axios
-      .post('http://localhost:3001/pictures/new', {
+      .post('/pictures/new', {
         maxNumberOfShapesInPicture
       })
       .then(response => {
@@ -81,7 +81,7 @@ const Control = props => {
 
   const handleSavePicture = () => {
     axios
-      .post('http://localhost:3001/pictures', {
+      .post('/pictures', {
         picture: picture
       })
       .then(response => {
