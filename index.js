@@ -7,9 +7,12 @@ const { createPicture } = require('./picture/createPicture')
 const mongoose = require('mongoose')
 const { Picture } = require('./models')
 const path = require('path')
+const dotenv = require('dotenv')
 
+const PORT = process.env.PORT || 3001
 const url = `mongodb://localhost:27017/pilogy`
 
+dotenv.config()
 app.use(bodyParser.json({ limit: '50mb' }))
 
 app.use(cors())
@@ -113,7 +116,6 @@ app.get('*', (req, res) => {
 
 // }
 
-const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
