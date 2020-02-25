@@ -20,7 +20,7 @@ const fitPictureToScreen = () => {
   picture.style.height = `${newHeight}px`
   picture.style.transform = 'scale(1)'
   picture.style.left = `${(window.innerWidth - newWidth) / 2}px`
-  picture.style.top = '8px' // margin * 1
+  picture.style.top = `${(availableHeight - newHeight) / 2 + 8}px` // margin * 1
   document.getElementById('svgPicture').setAttribute('width', `${newWidth}px`)
   document.getElementById('svgPicture').setAttribute('height', `${newHeight}px`)
 }
