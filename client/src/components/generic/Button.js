@@ -16,8 +16,10 @@ const StyledButton = styled.button`
   white-space: nowrap;
   overflow: hidden;
 
-  :hover {
-    background-color: ${props => props.theme.buttonHoverBackground};
+  @media (hover: hover) {
+    :hover {
+      background-color: ${props => props.theme.buttonHoverBackground};
+    }
   }
   :focus {
     outline: none;
