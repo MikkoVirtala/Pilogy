@@ -34,8 +34,13 @@ const Picture = styled.div`
 
 const Main = () => {
   const picture = useSelector(getPicture)
-  console.log('picture: ', picture)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    window.addEventListener('resize', fitPictureToScreen)
+    return () => window.removeEventListener('resize', fitPictureToScreen)
+  })
+
   useEffect(() => {
     if (picture.id) {
       clearPicture()
@@ -51,10 +56,7 @@ const Main = () => {
   useEffect(() => {
     const main = document.getElementById('main')
     addZoom(main)
-
-    return () => {
-      removeZoom(main)
-    }
+    return () => removeZoom(main)
   })
 
   useEffect(() => {
@@ -62,8 +64,8 @@ const Main = () => {
   })
 
   return (
-    <Container id="main">
-      <Picture id="picture" />
+    <Container id='main'>
+      <Picture id='picture' />
       <Control />
     </Container>
   )
