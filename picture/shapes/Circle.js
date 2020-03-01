@@ -34,6 +34,13 @@ class Circle extends Shape {
     this.attachmentPoints.push([-this.r, 0.0])
     this.attachmentPoints.push([0.0, 0.0])
   }
+  calculateNormalAnglesAtAttachmentPoints() {
+    this.normalAnglesAtAttachmentPoints.push(270 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(90 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(180 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(270 + this.rotationInDegrees)
+  }
 }
 
 module.exports.Circle = Circle

@@ -10,6 +10,7 @@ class Shape {
     this.pointToAttach = pointToAttach
     this.attachmentPointIndex = attachmentPointIndex
     this.attachmentPoints = []
+    this.normalAnglesAtAttachmentPoints = []
     this.visible = visible
   }
   makeRotationInDegreesBetween0And360(rotationInDegrees) {

@@ -38,6 +38,17 @@ class Rectangle extends Shape {
     this.attachmentPoints.push([0.0, 0.0])
     this.attachmentPoints.push([this.width / 2.0, this.height / 2.0])
   }
+  calculateNormalAnglesAtAttachmentPoints() {
+    this.normalAnglesAtAttachmentPoints.push(270 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(315 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(45 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(90 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(135 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(180 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(225 + this.rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(270 + this.rotationInDegrees)
+  }
 }
 
 module.exports.Rectangle = Rectangle

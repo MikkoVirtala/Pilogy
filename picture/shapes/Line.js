@@ -30,6 +30,11 @@ class Line extends Shape {
     this.attachmentPoints.push([this.length / 2.0, 0.0])
     this.attachmentPoints.push([this.length, 0.0])
   }
+  calculateNormalAnglesAtAttachmentPoints() {
+    this.normalAnglesAtAttachmentPoints.push(rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(rotationInDegrees)
+    this.normalAnglesAtAttachmentPoints.push(rotationInDegrees)
+  }
 }
 
 module.exports.Line = Line
