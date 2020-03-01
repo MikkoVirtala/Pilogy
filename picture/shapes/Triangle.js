@@ -47,19 +47,20 @@ class Triangle extends Shape {
   }
   calculateNormalAnglesAtAttachmentPoints() {
     var topAngle = this.calculateTopAngle()
+    var baseAngle = (180 - topAngle) / 2.0
     this.normalAnglesAtAttachmentPoints.push(270 + this.rotationInDegrees)
     this.normalAnglesAtAttachmentPoints.push(
       90 - topAngle / 2.0 + 270 + this.rotationInDegrees
     )
     this.normalAnglesAtAttachmentPoints.push(
-      (180 - topAngle) / 4.0 + this.rotationInDegrees
+      baseAngle / 2.0 + this.rotationInDegrees
     )
     this.normalAnglesAtAttachmentPoints.push(90 + this.rotationInDegrees)
     this.normalAnglesAtAttachmentPoints.push(
-      (180 - topAngle) / 4.0 + 90 + this.rotationInDegrees
+      baseAngle / 2.0 + 90 + this.rotationInDegrees
     )
     this.normalAnglesAtAttachmentPoints.push(
-      topAngle + (180 - topAngle / 2.0) + 90 + this.rotationInDegrees
+      topAngle + baseAngle + 90 + this.rotationInDegrees
     )
     this.normalAnglesAtAttachmentPoints.push(270 + this.rotationInDegrees)
   }
