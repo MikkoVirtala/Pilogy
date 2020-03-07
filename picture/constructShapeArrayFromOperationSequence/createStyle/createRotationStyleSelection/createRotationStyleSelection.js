@@ -6,7 +6,7 @@ const {
 module.exports.createRotationStyleSelection = () => {
 	const numberOfRotationStylesInSelection = getRandomIntegerInRangeIncludeMax(
 		1,
-		10
+		8
 	)
 	const rotationStyleSelection = []
 
@@ -14,5 +14,6 @@ module.exports.createRotationStyleSelection = () => {
 		rotationStyleSelection.push(createRotationStyle())
 	}
 
+	console.log('rotationStyleSelection: ', rotationStyleSelection)
 	return rotationStyleSelection
 }
