@@ -1,44 +1,47 @@
 import {
-  white,
-  black,
-  transparent,
-  smallWindowWidthLimit,
-  sidebarWidth,
-  font
+	white,
+	black,
+	transparent,
+	smallWindowWidthLimit,
+	sidebarWidth,
+	font,
+	largeFont
 } from './genericConstants'
 
 const barBackground = transparent
-const iconAndFontColor = black
+const iconAndTextColor = black
 const whiteTheme = {
-  font: font,
+	font: font,
+	largeFont: largeFont,
+	textColor: iconAndTextColor,
 
-  sidebarWidth: sidebarWidth,
+	sidebarWidth: sidebarWidth,
 
-  smallWindowWidthLimit: smallWindowWidthLimit,
+	smallWindowWidthLimit: smallWindowWidthLimit,
 
-  shadow: 'none',
+	shadow: 'none',
 
-  iconSize: '24px',
-  iconColor: iconAndFontColor,
+	iconSize: '24px',
+	iconColor: iconAndTextColor,
 
-  mainBackground: white,
+	mainBackground: white,
 
-  pictureBackground: white,
+	pictureBackground: white,
 
-  controlBackground: barBackground,
+	controlBackground: barBackground,
 
-  navigationBarBackground: barBackground,
-  navigationBarHeight: '60px',
+	navigationBarBackground: barBackground,
+	navigationBarHeight: '60px',
 
-  sidebarBackground: barBackground,
+	sidebarBackground: barBackground,
 
-  dropdownClosedBackground: barBackground,
-  dropdownOpenBackground: 'hsla(0, 0%, 98%, 1)',
+	dropdownClosedBackground: barBackground,
+	dropdownOpenBackground: 'hsla(0, 0%, 98%, 1)',
 
-  buttonBackground: 'hsla(0, 0%, 100%, 0.6)',
-  buttonColor: iconAndFontColor,
-  buttonHoverBackground: 'hsla(0, 0%, 98%, 0.8)',
-  buttonActiveBackground: 'hsla(0, 0%, 96%, 1.0)'
+	buttonBackground: 'hsla(0, 0%, 100%, 0.6)',
+	buttonColor: iconAndTextColor,
+	buttonHoverBackground: 'hsla(0, 0%, 98%, 0.8)',
+	buttonActiveBackground: 'hsla(0, 0%, 96%, 1.0)'
 }
 
 export default whiteTheme

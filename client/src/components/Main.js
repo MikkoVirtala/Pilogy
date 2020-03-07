@@ -10,65 +10,67 @@ import setSVGToFitItsElements from '../picture/convertShapesToSVG/setSVGToFitIts
 import clearPicture from '../picture/clearPicture'
 import fitPictureToScreen from '../picture/fitPictureToScreen'
 import { setLoadingPicture } from '../actions/picture'
+import Landing from './Landing'
 
 const Container = styled.div`
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  background-color: ${props => props.theme.mainBackground};
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	background-color: ${props => props.theme.mainBackground};
 `
 
 const Picture = styled.div`
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  z-index: 2;
-  transform: scale(1);
-  cursor: move;
-  background-color: ${props => props.theme.mainBackground};
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	z-index: 2;
+	transform: scale(1);
+	cursor: move;
+	background-color: ${props => props.theme.mainBackground};
 
-  // border: 1px solid orange;
+	// border: 1px solid orange;
 `
 
 const Main = () => {
-  const picture = useSelector(getPicture)
-  const dispatch = useDispatch()
+	const picture = useSelector(getPicture)
+	console.log('picture: ', picture)
+	const dispatch = useDispatch()
 
-  useEffect(() => {
-    window.addEventListener('resize', fitPictureToScreen)
-    return () => window.removeEventListener('resize', fitPictureToScreen)
-  })
+	useEffect(() => {
+		window.addEventListener('resize', fitPictureToScreen)
+		return () => window.removeEventListener('resize', fitPictureToScreen)
+	})
 
-  useEffect(() => {
-    if (picture.id) {
-      clearPicture()
-      let svg = convertShapesToSVG(picture.shapes)
-      document.getElementById('picture').appendChild(svg)
-      setSVGToFitItsElements(svg)
-      fitPictureToScreen()
-      dispatch(setLoadingPicture(false))
-    }
-    return () => clearPicture()
-  })
+	useEffect(() => {
+		if (picture) {
+			clearPicture()
+			let svg = convertShapesToSVG(picture.shapes)
+			document.getElementById('picture').appendChild(svg)
+			setSVGToFitItsElements(svg)
+			fitPictureToScreen()
+			dispatch(setLoadingPicture(false))
+		}
+		return () => clearPicture()
+	})
 
-  useEffect(() => {
-    const main = document.getElementById('main')
-    addZoom(main)
-    return () => removeZoom(main)
-  })
+	useEffect(() => {
+		const main = document.getElementById('main')
+		addZoom(main)
+		return () => removeZoom(main)
+	})
 
-  useEffect(() => {
-    drag(document.getElementById('picture'))
-  })
+	useEffect(() => {
+		drag(document.getElementById('picture'))
+	})
 
-  return (
-    <Container id='main'>
-      <Picture id='picture' />
-      <Control />
-    </Container>
-  )
+	return (
+		<Container id='main'>
+			{picture ? <Picture id='picture' /> : <Landing />}
+			<Control />
+		</Container>
+	)
 }
 
 export default Main
