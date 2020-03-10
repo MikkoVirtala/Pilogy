@@ -53,7 +53,7 @@ const Button = props => {
 		>
 			<IconAndHelpTextContainer>
 				{props.icon}
-				{helpIsVisible && props.helpText}
+				{props.loading ? props.loadingText : helpIsVisible && props.helpText}
 			</IconAndHelpTextContainer>
 			{props.text}
 		</StyledButton>

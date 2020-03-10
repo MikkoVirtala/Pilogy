@@ -60,6 +60,8 @@ const CreatePictureButton = props => {
 			onClick={() => handleCreatePicture()}
 			icon={<CreateIcon />}
 			helpText='create'
+			loading={loadingPicture}
+			loadingText={'loading'}
 			disabled={loadingPicture}
 			createPictureButtonColor={createPictureButtonColor}
 		/>
