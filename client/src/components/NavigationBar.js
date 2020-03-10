@@ -10,6 +10,9 @@ import {
 	getRightSidebarIsVisible,
 	getErrorMessage
 } from '../selectors'
+// import { PilogyLogo } from '../resources/PilogyLogo1.svg'
+// import Pilogyp from '../resources/PilogyLogo1.svg'
+// import { ReactComponent as PilogyLogo1 } from '../resources/PilogyLogo1.svg'
 
 const Container = styled.div`
 	z-index: 102;
@@ -27,7 +30,7 @@ const Logo = styled.div`
 	align-items: center;
 	float: left;
 	background-color: ${props => props.theme.buttonBackground};
-	font: ${props => props.theme.font};
+	font: ${props => props.theme.logoFont};
 	color: ${props => props.theme.textColor};
 	min-width: 60px;
 	min-height: 60px;
@@ -57,6 +60,7 @@ const NavigationBar = () => {
 	const rightSidebarIsVisible = useSelector(getRightSidebarIsVisible)
 	const errorMessage = useSelector(getErrorMessage)
 	const dispatch = useDispatch()
+	// console.log('PilogyLogo1: ', PilogyLogo1)
 
 	const handleOnClick = sidebar => {
 		windowHasSmallWidth() && setOtherSidebarsInvisible(sidebar)
@@ -76,7 +80,16 @@ const NavigationBar = () => {
 				icon={<MenuIcon />}
 				helpText='menu'
 			/> */}
-			<Logo>Pilogy</Logo>
+			{/* <PilogyLogo1 /> */}
+			<Logo>
+				{/* <img
+					src={require('../resources/PilogyLogo1.svg')}
+					width='24'
+					height='24'
+				/>
+				ilogy */}
+				Pilogy
+			</Logo>
 			<ToggleRightSidebarButton
 				onClick={() => handleOnClick('right')}
 				icon={<CogIcon />}

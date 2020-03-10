@@ -5,6 +5,7 @@ import {
 	smallWindowWidthLimit,
 	sidebarWidth,
 	font,
+	logoFont,
 	largeFont
 } from './genericConstants'
 
@@ -12,6 +13,7 @@ const barBackground = transparent
 const iconAndTextColor = white
 const blackTheme = {
 	font: font,
+	logoFont: logoFont,
 	largeFont: largeFont,
 	textColor: iconAndTextColor,
 
