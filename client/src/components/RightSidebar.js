@@ -7,17 +7,17 @@ import ThemeDropdown from './ThemeDropdown'
 import RangeSlider from './generic/RangeSlider'
 
 const StyledSidebar = styled(Sidebar)`
-  z-index: 101;
-  right: 0;
+	z-index: 101;
+	right: 0;
 `
 
 const RightSidebar = () => {
-  return (
-    <StyledSidebar visible={useSelector(getRightSidebarIsVisible)}>
-      <ThemeDropdown />
-      <RangeSlider helpText="picture complexity" />
-    </StyledSidebar>
-  )
+	return (
+		<StyledSidebar visible={useSelector(getRightSidebarIsVisible)}>
+			<ThemeDropdown />
+			<RangeSlider text='Picture complexity' />
+		</StyledSidebar>
+	)
 }
 
 export default RightSidebar

@@ -72,13 +72,13 @@ const Control = props => {
 				icon={<DownloadIcon />}
 				helpText='download'
 			/>
-			<CopyToClipboard text={getPictureAsText()}>
+			{/* <CopyToClipboard text={getPictureAsText()}>
 				<Button
 					id='copy-to-clipboard-button'
 					icon={<CopyToClipboardIcon />}
 					helpText='clipboard'
 				/>
-			</CopyToClipboard>
+			</CopyToClipboard> */}
 			{/* <Button
         id="save-picture-button"
         onClick={() => handleSavePicture()}

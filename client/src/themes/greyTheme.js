@@ -3,7 +3,8 @@ import {
 	transparent,
 	smallWindowWidthLimit,
 	sidebarWidth,
-	font,
+	helpTextFont,
+	bodyFont,
 	logoFont,
 	largeFont
 } from './genericConstants'
@@ -11,7 +12,8 @@ import {
 const barBackground = transparent
 const iconAndTextColor = white
 const greyTheme = {
-	font: font,
+	helpTextFont: helpTextFont,
+	bodyFont: bodyFont,
 	logoFont: logoFont,
 	largeFont: largeFont,
 	textColor: iconAndTextColor,
@@ -39,8 +41,8 @@ const greyTheme = {
 	dropdownClosedBackground: barBackground,
 	dropdownOpenBackground: 'hsla(0, 0%, 22%, 1)',
 
-	buttonBackground: 'hsla(0, 0%, 12%, 0.6)',
 	buttonColor: iconAndTextColor,
+	buttonBackground: 'hsla(0, 0%, 12%, 0.6)',
 	buttonHoverBackground: 'hsla(0, 0%, 22%, 0.8)',
 	buttonActiveBackground: 'hsla(0, 0%, 24%, 1.0)'
 }

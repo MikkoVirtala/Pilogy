@@ -18,6 +18,7 @@ const Container = styled.div`
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
+	cursor: ${props => (props.picture ? 'all-scroll' : 'default')};
 	background-color: ${props => props.theme.mainBackground};
 `
 
@@ -27,7 +28,7 @@ const Picture = styled.div`
 	height: 500px;
 	z-index: 2;
 	transform: scale(1);
-	cursor: move;
+	cursor: all-scroll;
 	background-color: ${props => props.theme.mainBackground};
 
 	// border: 1px solid orange;
@@ -66,7 +67,7 @@ const Main = () => {
 	})
 
 	return (
-		<Container id='main'>
+		<Container id='main' picture={picture}>
 			{picture ? <Picture id='picture' /> : <Landing />}
 			<Control />
 		</Container>

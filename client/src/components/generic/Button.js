@@ -8,7 +8,8 @@ const StyledButton = styled.button`
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	font: ${props => props.theme.font};
+	cursor: pointer;
+	font: ${props => props.theme.bodyFont};
 	background-color: ${props => props.theme.buttonBackground};
 	color: ${props => props.theme.buttonColor};
 	border: none;
@@ -30,16 +31,22 @@ const StyledButton = styled.button`
 	}
 `
 
-const IconAndHelpTextContainer = styled.div`
+const IconAndLoadingAndHelpTextContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font: ${props => props.theme.font};
+	cursor: pointer;
+	font: ${props => props.theme.helpTextFont};
 	min-width: 60px;
 	min-height: 60px;
 	width: 60px;
 	height: 60px;
+`
+
+const LoadingAndHelpTextContainer = styled.label`
+	cursor: pointer;
+	margin-bottom: 4px;
 `
 
 const Button = props => {
@@ -51,10 +58,12 @@ const Button = props => {
 			onClick={props.onClick}
 			disabled={props.disabled}
 		>
-			<IconAndHelpTextContainer>
+			<IconAndLoadingAndHelpTextContainer>
 				{props.icon}
-				{props.loading ? props.loadingText : helpIsVisible && props.helpText}
-			</IconAndHelpTextContainer>
+				<LoadingAndHelpTextContainer>
+					{props.loading ? props.loadingText : helpIsVisible && props.helpText}
+				</LoadingAndHelpTextContainer>
+			</IconAndLoadingAndHelpTextContainer>
 			{props.text}
 		</StyledButton>
 	)
