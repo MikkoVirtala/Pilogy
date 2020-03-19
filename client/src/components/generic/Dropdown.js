@@ -4,10 +4,9 @@ import Button from './Button'
 
 const Container = styled.div`
 	position: relative;
-	z-index: 201;
 	width: 100%;
-	height: 60px;
-	margin-top: 60px;
+	height: ${props =>
+		props.isOpen ? `${props.numberOfButtons * 60}px` : '60px'};
 	background-color: ${props =>
 		props.isOpen
 			? props.theme.dropdownOpenBackground
@@ -22,7 +21,6 @@ const Selection = styled.div`
 	position: absolute;
 	top: 60px;
 	left: 0;
-	z-index: 201;
 	width: 240px;
 	background-color: ${props => props.theme.dropdownOpenBackground};
 	box-shadow: ${props => props.theme.shadow};
@@ -36,7 +34,10 @@ const Dropdown = props => {
 		return child.props.name !== props.selectedButtonName
 	})
 	return (
-		<Container isOpen={props.isOpen}>
+		<Container
+			isOpen={props.isOpen}
+			numberOfButtons={unselectedButtons.length + 1}
+		>
 			<StyledButton
 				onClick={props.selectedOnClick}
 				icon={selectedButton.props.icon}

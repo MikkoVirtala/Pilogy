@@ -65,11 +65,9 @@ const Slider = styled.input`
 `
 
 const SliderText = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	height: 18px;
+	width: 240px;
+	text-align: center;
 	font: ${props => props.theme.bodyFont};
 `
 

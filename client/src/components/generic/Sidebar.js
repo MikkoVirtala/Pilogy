@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Container = styled.div`
 	display: block;
 	overflow-x: hidden;
+	overflow-y: hidden;
 	position: fixed;
 	top: 0;
 	width: ${props => (props.visible ? `${props.theme.sidebarWidth}` : '0')};
@@ -11,7 +12,7 @@ const Container = styled.div`
 	background-color: ${props => props.theme.sidebarBackground};
 	box-shadow: ${props => (props.visible ? `${props.theme.shadow}` : 'none')};
 	transition-property: width, box-shadow;
-	transition-duration: 0.24s, 0s;
+	transition-duration: 0.44s, 0s;
 	transition-delay: 0s, ${props => (props.visible ? '0s' : '0.24s')};
 `
 

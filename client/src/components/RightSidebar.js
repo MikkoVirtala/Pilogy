@@ -9,6 +9,8 @@ import RangeSlider from './generic/RangeSlider'
 const StyledSidebar = styled(Sidebar)`
 	z-index: 101;
 	right: 0;
+	top: 60px;
+	height: auto;
 `
 
 const RightSidebar = () => {
