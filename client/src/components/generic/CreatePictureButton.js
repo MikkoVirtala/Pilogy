@@ -6,6 +6,7 @@ import Button from './Button'
 import { CreateIcon } from './Icons'
 import { setPicture, setLoadingPicture } from '../../actions/picture'
 import { setErrorMessage } from '../../actions/error'
+import { closeRightSidebar } from '../../actions/sidebar'
 import {
 	getLoadingPicture,
 	getCreatePictureButtonColor,
@@ -33,6 +34,7 @@ const CreatePictureButton = props => {
 	const createPictureButtonColor = useSelector(getCreatePictureButtonColor)
 
 	const handleCreatePicture = () => {
+		dispatch(closeRightSidebar())
 		dispatch(setLoadingPicture(true))
 		axios
 			.post('/pictures/new', {
@@ -59,9 +61,9 @@ const CreatePictureButton = props => {
 			id='create-picture-button'
 			onClick={() => handleCreatePicture()}
 			icon={<CreateIcon />}
-			helpText='create'
+			helpText='Create'
 			loading={loadingPicture}
-			loadingText={'loading'}
+			loadingText={'Loading'}
 			disabled={loadingPicture}
 			createPictureButtonColor={createPictureButtonColor}
 		/>

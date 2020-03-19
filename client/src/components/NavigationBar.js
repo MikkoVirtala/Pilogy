@@ -93,18 +93,18 @@ const NavigationBar = () => {
 			<ToggleRightSidebarButton
 				onClick={() => handleOnClick('right')}
 				icon={<CogIcon />}
-				helpText='settings'
+				helpText='Settings'
 			/>
 			<ToggleHelpButton
 				onClick={() => dispatch(toggleHelpVisibility())}
 				icon={<HelpIcon />}
-				helpText='help'
+				helpText='Help'
 			/>
 			{errorMessage && (
 				<ShowErrorMessageButton
 					onClick={() => dispatch(toggleHelpVisibility())}
 					icon={<ErrorIcon />}
-					helpText='error'
+					helpText='Error'
 				/>
 			)}
 		</Container>

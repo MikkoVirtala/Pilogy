@@ -30,21 +30,21 @@ const ThemeDropdown = () => {
 				name='whiteTheme'
 				onClick={() => handleOnClick('whiteTheme')}
 				icon={<WhiteThemeIcon />}
-				helpText='theme'
+				helpText='Theme'
 				text='White theme'
 			/>
 			<StyledButton
 				name='greyTheme'
 				onClick={() => handleOnClick('greyTheme')}
 				icon={<GreyThemeIcon />}
-				helpText='theme'
+				helpText='Theme'
 				text='Grey theme'
 			/>
 			<StyledButton
 				name='blackTheme'
 				onClick={() => handleOnClick('blackTheme')}
 				icon={<BlackThemeIcon />}
-				helpText='theme'
+				helpText='Theme'
 				text='Black theme'
 			/>
 		</Dropdown>

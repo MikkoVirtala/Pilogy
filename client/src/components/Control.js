@@ -10,6 +10,7 @@ import {
 	FitToPictureToScreenSizeIcon
 } from './generic/Icons'
 import { setErrorMessage } from '../actions/error'
+import { closeRightSidebar } from '../actions/sidebar'
 import { getPicture } from '../selectors'
 import fitPictureToScreen from '../picture/fitPictureToScreen'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -51,7 +52,7 @@ const Control = props => {
 			? document.getElementById('picture').innerHTML
 			: ''
 
-	const handlePrint = () => {
+	const download = () => {
 		if (
 			document.getElementById('picture') &&
 			document.getElementById('picture').innerHTML
@@ -64,32 +65,42 @@ const Control = props => {
 		}
 	}
 
+	const handleDownload = () => {
+		download()
+		dispatch(closeRightSidebar())
+	}
+
+	const handleFitPictureToScreen = () => {
+		fitPictureToScreen()
+		dispatch(closeRightSidebar())
+	}
+
 	return (
 		<Container id='control' picture={picture}>
 			<Button
 				id='download-button'
-				onClick={() => handlePrint()}
+				onClick={handleDownload}
 				icon={<DownloadIcon />}
-				helpText='download'
+				helpText='Download'
 			/>
 			{/* <CopyToClipboard text={getPictureAsText()}>
 				<Button
 					id='copy-to-clipboard-button'
 					icon={<CopyToClipboardIcon />}
-					helpText='clipboard'
+					helpText='Clipboard'
 				/>
 			</CopyToClipboard> */}
 			{/* <Button
         id="save-picture-button"
         onClick={() => handleSavePicture()}
         icon={<SaveIcon />}
-        helpText="save"
+        helpText="Save"
         disabled={loadingPicture}
       /> */}
 			<Button
-				onClick={() => fitPictureToScreen()}
+				onClick={handleFitPictureToScreen}
 				icon={<FitToPictureToScreenSizeIcon />}
-				helpText='fit'
+				helpText='Fit'
 			/>
 			<CreatePictureButton />
 		</Container>
