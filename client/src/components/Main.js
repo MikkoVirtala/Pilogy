@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import Control from './Control'
 import drag from '../picture/drag'
-import { addZoom, removeZoom } from '../picture/zoom'
 import { getPicture } from '../selectors'
 import convertShapesToSVG from '../picture/convertShapesToSVG/convertShapesToSVG'
 import setSVGToFitItsElements from '../picture/convertShapesToSVG/setSVGToFitItsElements'
@@ -23,15 +23,19 @@ const Container = styled.div`
 `
 
 const Picture = styled.div`
-	position: absolute;
 	width: 500px;
 	height: 500px;
 	z-index: 2;
-	transform: scale(1);
 	cursor: all-scroll;
 	background-color: ${props => props.theme.mainBackground};
+`
 
-	// border: 1px solid orange;
+const PictureWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
 `
 
 const Main = () => {
@@ -57,18 +61,31 @@ const Main = () => {
 	})
 
 	useEffect(() => {
-		const main = document.getElementById('main')
-		addZoom(main)
-		return () => removeZoom(main)
+		drag(document.getElementById('picture'))
 	})
 
 	useEffect(() => {
-		drag(document.getElementById('picture'))
+		const transformComponent = document.getElementsByClassName(
+			'react-transform-component'
+		)
+		if (transformComponent && transformComponent[0]) {
+			transformComponent[0].style.overflow = 'visible'
+		}
 	})
 
 	return (
 		<Container id='main' picture={picture}>
-			{picture ? <Picture id='picture' /> : <Landing />}
+			{picture ? (
+				<PictureWrapper>
+					<TransformWrapper>
+						<TransformComponent>
+							<Picture id='picture' />
+						</TransformComponent>
+					</TransformWrapper>
+				</PictureWrapper>
+			) : (
+				<Landing />
+			)}
 			<Control />
 		</Container>
 	)

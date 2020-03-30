@@ -60,7 +60,6 @@ const NavigationBar = () => {
 	const rightSidebarIsVisible = useSelector(getRightSidebarIsVisible)
 	const errorMessage = useSelector(getErrorMessage)
 	const dispatch = useDispatch()
-	// console.log('PilogyLogo1: ', PilogyLogo1)
 
 	const handleOnClick = sidebar => {
 		windowHasSmallWidth() && setOtherSidebarsInvisible(sidebar)
