@@ -77,7 +77,10 @@ const Main = () => {
 		<Container id='main' picture={picture}>
 			{picture ? (
 				<PictureWrapper>
-					<TransformWrapper>
+					<TransformWrapper
+						options={{ minScale: 0.1, maxScale: 100000 }}
+						wheel={{ step: 2.5 }}
+					>
 						<TransformComponent>
 							<Picture id='picture' />
 						</TransformComponent>
