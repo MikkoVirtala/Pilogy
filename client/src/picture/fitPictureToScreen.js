@@ -32,10 +32,10 @@ const fitPictureToScreen = () => {
 			.getElementById('svgPicture')
 			.setAttribute('height', `${newHeight}px`)
 	}
-	resetTransformElement()
+	resetZoom()
 }
 
-const resetTransformElement = () => {
+const resetZoom = () => {
 	const transformElement = document.getElementsByClassName(
 		'react-transform-element'
 	)

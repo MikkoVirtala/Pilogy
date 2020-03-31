@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import Control from './Control'
 import { getPicture } from '../selectors'
 import Landing from './Landing'
 import Picture from './Picture'
@@ -22,7 +21,6 @@ const Main = () => {
 	return (
 		<Container id='main' picture={picture}>
 			{picture ? <Picture /> : <Landing />}
-			<Control />
 		</Container>
 	)
 }

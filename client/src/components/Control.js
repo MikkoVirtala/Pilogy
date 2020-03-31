@@ -30,7 +30,7 @@ const Container = styled.div`
 	box-shadow: ${props => props.theme.shadow};
 `
 
-const Control = props => {
+const Control = ({ resetZoom }) => {
 	const picture = useSelector(getPicture)
 	const dispatch = useDispatch()
 
@@ -71,6 +71,7 @@ const Control = props => {
 	}
 
 	const handleFitPictureToScreen = () => {
+		resetZoom()
 		fitPictureToScreen()
 		dispatch(closeRightSidebar())
 	}
@@ -102,7 +103,7 @@ const Control = props => {
 				icon={<FitToPictureToScreenSizeIcon />}
 				helpText='Fit'
 			/>
-			<CreatePictureButton />
+			<CreatePictureButton resetZoom={resetZoom} />
 		</Container>
 	)
 }

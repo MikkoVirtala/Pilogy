@@ -27,7 +27,7 @@ const StyledButton = styled(Button)`
 		`}
 `
 
-const CreatePictureButton = props => {
+const CreatePictureButton = ({ resetZoom }) => {
 	const dispatch = useDispatch()
 	const loadingPicture = useSelector(getLoadingPicture)
 	const maxNumberOfShapesInPicture = useSelector(getMaxNumberOfShapesInPicture)
@@ -50,6 +50,7 @@ const CreatePictureButton = props => {
 					dispatch(setPicture(picture))
 				}
 				dispatch(setLoadingPicture(false))
+				if (resetZoom) resetZoom()
 			})
 			.catch(error => {
 				dispatch(setErrorMessage(error))

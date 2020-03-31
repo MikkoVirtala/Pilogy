@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import { getPicture } from '../selectors'
+import Control from './Control'
 import convertShapesToSVG from '../picture/convertShapesToSVG/convertShapesToSVG'
 import setSVGToFitItsElements from '../picture/convertShapesToSVG/setSVGToFitItsElements'
 import clearPicture from '../picture/clearPicture'
@@ -57,13 +58,15 @@ const Picture = () => {
 
 	return (
 		<PictureWrapper>
-			<TransformWrapper
-				options={{ minScale: 0.1, maxScale: 100000 }}
-				wheel={{ step: 2.5 }}
-			>
-				<TransformComponent>
-					<PictureRoot id='picture' />
-				</TransformComponent>
+			<TransformWrapper options={{ minScale: 0.1, maxScale: 100000 }}>
+				{({ resetTransform }) => (
+					<>
+						<TransformComponent>
+							<PictureRoot id='picture' />
+						</TransformComponent>
+						<Control resetZoom={resetTransform} />
+					</>
+				)}
 			</TransformWrapper>
 		</PictureWrapper>
 	)
