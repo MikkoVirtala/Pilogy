@@ -1,18 +1,18 @@
 const {
-	getSequence
+	getSequence,
 } = require('../../createHierarchicalSequence/basicSequences/basicSequencesForCreatingStyle')
 const {
-	createHierarchicalSequence
+	createHierarchicalSequence,
 } = require('../../createHierarchicalSequence/createHierarchicalSequence')
 const {
-	createPatternOfNumbersInRange
+	createPatternOfNumbersInRange,
 } = require('./createPatternOfNumbersInRange')
 const { getRandomElementInArray } = require('../../getRandomElementInArray')
 const {
-	getRandomIntegerInRangeExcludeMax
+	getRandomIntegerInRangeExcludeMax,
 } = require('../../getRandomIntegerInRangeExcludeMax')
 const {
-	createRotationStyleSelection
+	createRotationStyleSelection,
 } = require('./createRotationStyleSelection/createRotationStyleSelection')
 const { hslToHex } = require('../../hslToHex')
 
@@ -46,6 +46,8 @@ class Style {
 		this.createShortAndLongLengthSelections()
 
 		this.rotationStyleSelection = createRotationStyleSelection()
+
+		this.createSelectionOfConstantsForRotationFunction()
 	}
 
 	createShortAndLongLengthSelections() {
@@ -57,6 +59,19 @@ class Style {
 				this.middleLengthSelection[i] / coefficient
 			)
 			this.longLengthSelection.push(this.middleLengthSelection[i] * coefficient)
+		}
+	}
+
+	createSelectionOfConstantsForRotationFunction() {
+		this.selectionOfConstantsForRotationFunction = []
+		const numberOfConstantsInSelection = getRandomIntegerInRangeExcludeMax(
+			1,
+			10
+		)
+		for (let i = 0; i < numberOfConstantsInSelection; i++) {
+			this.selectionOfConstantsForRotationFunction.push(
+				getRandomIntegerInRangeExcludeMax(1, 360)
+			)
 		}
 	}
 
@@ -87,6 +102,10 @@ class Style {
 
 	getRotationStyle() {
 		return getRandomElementInArray(this.rotationStyleSelection)
+	}
+
+	getConstantForRotationFunction() {
+		return getRandomElementInArray(this.selectionOfConstantsForRotationFunction)
 	}
 }
 
