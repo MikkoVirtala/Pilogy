@@ -12,6 +12,9 @@ const {
 	getRandomIntegerInRangeExcludeMax,
 } = require('../../getRandomIntegerInRangeExcludeMax')
 const {
+	getRandomIntegerInRangeIncludeMax,
+} = require('../../getRandomIntegerInRangeIncludeMax')
+const {
 	createRotationStyleSelection,
 } = require('./createRotationStyleSelection/createRotationStyleSelection')
 const { hslToHex } = require('../../hslToHex')
@@ -21,22 +24,34 @@ class Style {
 		this.hueSelection = createPatternOfNumbersInRange(
 			0,
 			360,
-			createHierarchicalSequence(0, getSequence)
+			createHierarchicalSequence(
+				getRandomIntegerInRangeIncludeMax(0, 1),
+				getSequence
+			)
 		)
 		this.saturationSelection = createPatternOfNumbersInRange(
 			0,
 			100,
-			createHierarchicalSequence(0, getSequence)
+			createHierarchicalSequence(
+				getRandomIntegerInRangeIncludeMax(0, 1),
+				getSequence
+			)
 		)
 		this.lightnessSelection = createPatternOfNumbersInRange(
 			0,
 			100,
-			createHierarchicalSequence(0, getSequence)
+			createHierarchicalSequence(
+				getRandomIntegerInRangeIncludeMax(0, 1),
+				getSequence
+			)
 		)
 		this.alphaSelection = createPatternOfNumbersInRange(
 			Math.random() * 0.9,
 			1.0,
-			createHierarchicalSequence(0, getSequence)
+			createHierarchicalSequence(
+				getRandomIntegerInRangeIncludeMax(0, 1),
+				getSequence
+			)
 		)
 		this.middleLengthSelection = createPatternOfNumbersInRange(
 			0,

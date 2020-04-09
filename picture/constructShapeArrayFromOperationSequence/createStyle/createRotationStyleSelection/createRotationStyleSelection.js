@@ -1,6 +1,6 @@
 const { createRotationStyle } = require('./createRotationStyle')
 const {
-	getRandomIntegerInRangeIncludeMax
+	getRandomIntegerInRangeIncludeMax,
 } = require('../../../getRandomIntegerInRangeIncludeMax')
 
 module.exports.createRotationStyleSelection = () => {
@@ -14,6 +14,5 @@ module.exports.createRotationStyleSelection = () => {
 		rotationStyleSelection.push(createRotationStyle())
 	}
 
-	console.log('rotationStyleSelection: ', rotationStyleSelection)
 	return rotationStyleSelection
 }
