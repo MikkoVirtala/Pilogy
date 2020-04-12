@@ -1,13 +1,13 @@
 const {
-  createMapOfWhatSectionOfRangeEachUniqueNumberOfHierarchicalSequenceRepresents
+  createMapOfWhatSectionOfRangeEachUniqueNumberOfHierarchicalSequenceRepresents,
 } = require('./createMapOfWhatSectionOfRangeEachUniqueNumberOfHierarchicalSequenceRepresents')
 const { constructSectionSequence } = require('./constructSectionSequence')
 const {
-  calculateNumberOfSectionUnitsInSectionSequence
+  calculateNumberOfSectionUnitsInSectionSequence,
 } = require('./calculateNumberOfSectionUnitsInSectionSequence')
 const {
-  getHierarchicalSequenceAsSingleArrayOfNumbers
-} = require('../../getHierarchicalSequenceAsSingleArrayOfNumbers')
+  getHierarchicalSequenceAsSingleArrayOfNumbers,
+} = require('../../generalHelperFunctions/getHierarchicalSequenceAsSingleArrayOfNumbers')
 
 module.exports.createPatternOfNumbersInRange = (
   lowerLimit,

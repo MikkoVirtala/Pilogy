@@ -10,7 +10,7 @@ const path = require('path')
 const dotenv = require('dotenv')
 
 const PORT = process.env.PORT || 3001
-const url = `mongodb://localhost:27017/pilogy`
+// const url = `mongodb://localhost:27017/pilogy`
 
 dotenv.config()
 app.use(bodyParser.json({ limit: '50mb' }))
@@ -29,11 +29,11 @@ const requestLogger = (request, response, next) => {
 
 app.use(requestLogger)
 
-mongoose
-  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .catch(error => {
-    console.log('error: ', error.stack)
-  })
+// mongoose
+//   .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .catch(error => {
+//     console.log('error: ', error.stack)
+//   })
 
 //////////////////////////////
 
@@ -90,7 +90,7 @@ app.post('/pictures/new', (request, response) => {
   }
   const picture = {
     id: uuidv1(),
-    shapes: createPicture(maxNumberOfShapesInPicture)
+    shapes: createPicture(maxNumberOfShapesInPicture),
   }
 
   console.log('shapes ready: ', picture.shapes.length)

@@ -1,9 +1,9 @@
 const {
-  makeSequenceForEveryUniqueNumber
+  makeSequenceForEveryUniqueNumber,
 } = require('./makeSequenceForEveryUniqueNumber')
 const {
-  getUniqueNumbersInSequence
-} = require('../../getUniqueNumbersInSequence')
+  getUniqueNumbersInSequence,
+} = require('../../generalHelperFunctions/getUniqueNumbersInSequence')
 
 module.exports.makeHierarchicalSequenceForEveryUniqueSequence = (
   uniqueSequences,

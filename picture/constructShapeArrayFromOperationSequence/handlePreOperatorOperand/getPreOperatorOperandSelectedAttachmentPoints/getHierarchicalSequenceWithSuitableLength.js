@@ -1,4 +1,6 @@
-const { getRandomElementInArray } = require('../../../getRandomElementInArray')
+const {
+  getRandomElementInArray,
+} = require('../../../generalHelperFunctions/getRandomElementInArray')
 
 module.exports.getHierarchicalSequenceWithSuitableLength = (
   hierarchicalSequenceRepository,

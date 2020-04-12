@@ -1,18 +1,20 @@
 const {
-  createHierarchicalSequenceRepository
+  createHierarchicalSequenceRepository,
 } = require('./createHierarchicalSequenceRepository/createHierarchicalSequenceRepository')
 const {
-  createOperationSequence
+  createOperationSequence,
 } = require('./createOperationSequence/createOperationSequence')
 const {
-  constructShapeArrayFromOperationSequence
+  constructShapeArrayFromOperationSequence,
 } = require('./constructShapeArrayFromOperationSequence/constructShapeArrayFromOperationSequence')
 const {
-  getRandomIntegerInRangeExcludeMax
-} = require('./getRandomIntegerInRangeExcludeMax')
-const { roundNumbersInShapes } = require('./roundNumbers/roundNumbersInShapes')
+  getRandomIntegerInRangeExcludeMax,
+} = require('./generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
+const {
+  roundNumbersInShapes,
+} = require('./generalHelperFunctions/roundNumbers/roundNumbersInShapes')
 
-module.exports.createPicture = maxNumberOfShapesInPicture => {
+module.exports.createPicture = (maxNumberOfShapesInPicture) => {
   let shapes = []
   const minimumNumberOfShapesInPicture = maxNumberOfShapesInPicture * 0.5
   for (let i = 0; i < 1000; i++) {

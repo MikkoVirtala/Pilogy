@@ -1,11 +1,13 @@
 const {
-  getUniqueNumbersInSequence
-} = require('./../../getUniqueNumbersInSequence')
+  getUniqueNumbersInSequence,
+} = require('./../../generalHelperFunctions/getUniqueNumbersInSequence')
 const {
-  getRandomIntegerInRangeIncludeMax
-} = require('./../../getRandomIntegerInRangeIncludeMax')
+  getRandomIntegerInRangeIncludeMax,
+} = require('./../../generalHelperFunctions/getRandomIntegerInRangeIncludeMax')
 
-module.exports.createMapOfWhatSectionOfRangeEachUniqueNumberOfHierarchicalSequenceRepresents = hierarchicalSequence => {
+module.exports.createMapOfWhatSectionOfRangeEachUniqueNumberOfHierarchicalSequenceRepresents = (
+  hierarchicalSequence
+) => {
   const mapOfWhatSectionOfRangeEachUniqueNumberOfHierarchicalSequenceRepresents = new Map()
   const uniqueNumbersInSequence = getUniqueNumbersInSequence(
     hierarchicalSequence

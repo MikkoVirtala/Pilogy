@@ -1,4 +1,6 @@
-const { getRandomElementInArray } = require('../../getRandomElementInArray')
+const {
+  getRandomElementInArray,
+} = require('../../generalHelperFunctions/getRandomElementInArray')
 
 module.exports.getPreOperatorOperandSelectedShapes = (
   shapeArray,
@@ -20,11 +22,11 @@ module.exports.getPreOperatorOperandSelectedShapes = (
     case 'latestOperationResult':
       return shapeArray.slice(indexOfLatestOperationResultStart)
     case 'lines':
-      return shapeArray.filter(shape => shape.type === 'line')
+      return shapeArray.filter((shape) => shape.type === 'line')
     case 'rectangles':
-      return shapeArray.filter(shape => shape.type === 'rectangle')
+      return shapeArray.filter((shape) => shape.type === 'rectangle')
     case 'circles':
-      return shapeArray.filter(shape => shape.type === 'circle')
+      return shapeArray.filter((shape) => shape.type === 'circle')
     default:
       return []
   }

@@ -1,8 +1,10 @@
 const {
-  getUniqueNumbersInSequence
-} = require('../../../getUniqueNumbersInSequence')
+  getUniqueNumbersInSequence,
+} = require('../../../generalHelperFunctions/getUniqueNumbersInSequence')
 
-module.exports.makeMapOfWhatAttachmentPointsToSelect = hierarchicalSequence => {
+module.exports.makeMapOfWhatAttachmentPointsToSelect = (
+  hierarchicalSequence
+) => {
   let mapOfWhatAttachmentPointsToSelect = new Map()
   const uniqueNumbersInSequence = getUniqueNumbersInSequence(
     hierarchicalSequence

@@ -1,17 +1,17 @@
 const {
-  createHierarchicalSequence
+  createHierarchicalSequence,
 } = require('../createHierarchicalSequence/createHierarchicalSequence')
 const {
-  getHierarchicalSequenceLength
+  getHierarchicalSequenceLength,
 } = require('./getHierarchicalSequenceLength')
 const {
-  getHierarchicalSequenceAsSingleArrayOfNumbers
-} = require('../getHierarchicalSequenceAsSingleArrayOfNumbers')
+  getHierarchicalSequenceAsSingleArrayOfNumbers,
+} = require('../generalHelperFunctions/getHierarchicalSequenceAsSingleArrayOfNumbers')
 const {
-  getSequence
+  getSequence,
 } = require('../createHierarchicalSequence/basicSequences/basicSequencesForCreatingAttachmentPointSelectionsOfShapes')
 
-module.exports.createHierarchicalSequenceRepository = maxNumberOfLevels => {
+module.exports.createHierarchicalSequenceRepository = (maxNumberOfLevels) => {
   const numberOfTrialsPerLevel = 1000
   let hierarchicalSequenceRepository = new Map()
   for (let i = 0; i < maxNumberOfLevels; i++) {
