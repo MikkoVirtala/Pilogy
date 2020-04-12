@@ -1,11 +1,7 @@
 const {
   handlePreOperatorOperand,
 } = require('../handlePreOperatorOperand/handlePreOperatorOperand')
-const { Triangle } = require('../../shapes/Triangle')
 const { getInitializingShape } = require('../getInitializingShape')
-const {
-  getRandomIntegerInRangeExcludeMax,
-} = require('../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
 const { LineBuilder } = require('./LineBuilder')
 const { RectangleBuilder } = require('./RectangleBuilder')
 const { CircleBuilder } = require('./CircleBuilder')
