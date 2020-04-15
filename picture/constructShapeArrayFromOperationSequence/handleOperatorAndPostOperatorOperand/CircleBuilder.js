@@ -10,6 +10,7 @@ class CircleBuilder extends ShapeBuilder {
 		this.r = style.getLength('short')
 		this.fill = style.getColor()
 		this.fillOpacity = style.getOpacity()
+		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 4)
 	}
 
 	build() {

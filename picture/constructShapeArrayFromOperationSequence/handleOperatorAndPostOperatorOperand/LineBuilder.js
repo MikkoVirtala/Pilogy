@@ -8,6 +8,7 @@ class LineBuilder extends ShapeBuilder {
 	constructor(style) {
 		super(style)
 		this.length = style.getLength('long')
+		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 2)
 	}
 
 	build() {
