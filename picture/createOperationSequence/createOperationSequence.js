@@ -6,13 +6,13 @@ const operationElements = {
 	operators: ['add'],
 	operands: {
 		preOperators: [
-			'all',
+			// 'all',
 			//'some',
 			'latestOperationResult',
-			'lines',
-			'rectangles',
-			'circles',
-			'triangles',
+			// 'lines',
+			// 'rectangles',
+			// 'circles',
+			// 'triangles',
 		],
 		preOperatorDeterminers: [
 			'ofSameParent',
@@ -21,30 +21,62 @@ const operationElements = {
 		],
 		postOperators: ['line', 'rectangle', 'circle', 'triangle'],
 	},
-	resultIsVisible: () => Math.random() > 0.25,
+	resultIsVisible: () => true, // () => Math.random() > 0.25,
 }
 
 module.exports.createOperationSequence = (operationSequenceLength) => {
-	let operationSequence = [
+	// let operationSequence = [
+	// 	{
+	// 		operator: 'initialize',
+	// 		resultIsVisible: operationElements.resultIsVisible(),
+	// 	},
+	// ]
+	// for (let i = 0; i < operationSequenceLength; i++) {
+	// 	operationSequence.push({
+	// 		preOperatorOperand: getRandomElementInArray(
+	// 			operationElements.operands.preOperators
+	// 		),
+	// 		preOperatorOperandDeterminer: getRandomElementInArray(
+	// 			operationElements.operands.preOperatorDeterminers
+	// 		),
+	// 		operator: getRandomElementInArray(operationElements.operators),
+	// 		postOperatorOperand: getRandomElementInArray(
+	// 			operationElements.operands.postOperators
+	// 		),
+	// 		resultIsVisible: operationElements.resultIsVisible(),
+	// 	})
+	// }
+	// console.log('operationSequence: ', operationSequence)
+
+	return [
+		{ operator: 'initialize', resultIsVisible: true },
+		// {
+		// 	preOperatorOperand: 'latestOperationResult',
+		// 	preOperatorOperandDeterminer: 'ofSameParent',
+		// 	operator: 'add',
+		// 	postOperatorOperand: 'rectangle',
+		// 	resultIsVisible: true,
+		// },
+		// {
+		// 	preOperatorOperand: 'latestOperationResult',
+		// 	preOperatorOperandDeterminer: 'ofAllAncestry',
+		// 	operator: 'add',
+		// 	postOperatorOperand: 'triangle',
+		// 	resultIsVisible: true,
+		// },
 		{
-			operator: 'initialize',
-			resultIsVisible: operationElements.resultIsVisible(),
+			preOperatorOperand: 'latestOperationResult',
+			preOperatorOperandDeterminer: 'ofSameParent',
+			operator: 'add',
+			postOperatorOperand: 'line',
+			resultIsVisible: true,
+		},
+		{
+			preOperatorOperand: 'latestOperationResult',
+			preOperatorOperandDeterminer: 'ofSameParent',
+			operator: 'add',
+			postOperatorOperand: 'rectangle',
+			resultIsVisible: true,
 		},
 	]
-	for (let i = 0; i < operationSequenceLength; i++) {
-		operationSequence.push({
-			preOperatorOperand: getRandomElementInArray(
-				operationElements.operands.preOperators
-			),
-			preOperatorOperandDeterminer: getRandomElementInArray(
-				operationElements.operands.preOperatorDeterminers
-			),
-			operator: getRandomElementInArray(operationElements.operators),
-			postOperatorOperand: getRandomElementInArray(
-				operationElements.operands.postOperators
-			),
-			resultIsVisible: operationElements.resultIsVisible(),
-		})
-	}
-	return operationSequence
 }

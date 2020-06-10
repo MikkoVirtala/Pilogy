@@ -1,5 +1,6 @@
 const { operate } = require('./handleOperatorAndPostOperatorOperand/operate')
 const { Style } = require('./createStyle/Style')
+const { Shapes } = require('../shapes/Shapes')
 
 module.exports.constructShapeArrayFromOperationSequence = (
 	operationSequence,
@@ -7,24 +8,20 @@ module.exports.constructShapeArrayFromOperationSequence = (
 	maxNumberOfShapesInPicture
 ) => {
 	const style = new Style()
-	let shapeArray = []
-	let indexOfLatestOperationResultStart = 0
+	const shapes = new Shapes()
 	for (let i = 0; i < operationSequence.length; i++) {
 		const newShapes = operate(
-			shapeArray,
-			indexOfLatestOperationResultStart,
+			shapes,
 			operationSequence[i],
 			hierarchicalSequenceRepository,
 			style
 		)
-		indexOfLatestOperationResultStart = shapeArray.length
-		if (shapeArray.length + newShapes.length > maxNumberOfShapesInPicture) {
-			console.log('Break')
+		if (shapes.getLength() + newShapes.length > maxNumberOfShapesInPicture) {
 			break
 		}
-		shapeArray.push(...newShapes)
+		shapes.addLevel(newShapes)
 	}
-	return shapeArray.filter(function(shape) {
+	return shapes.flat().filter(function (shape) {
 		return shape.isVisible()
 	})
 }

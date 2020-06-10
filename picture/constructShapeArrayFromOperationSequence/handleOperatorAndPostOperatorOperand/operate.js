@@ -6,10 +6,10 @@ const { LineBuilder } = require('./LineBuilder')
 const { RectangleBuilder } = require('./RectangleBuilder')
 const { CircleBuilder } = require('./CircleBuilder')
 const { TriangleBuilder } = require('./TriangleBuilder')
+const { selectAttachmentPoints } = require('./selectAttachmentPoints')
 
 module.exports.operate = (
-	shapeArray,
-	indexOfLatestOperationResultStart,
+	shapes,
 	operation,
 	hierarchicalSequenceRepository,
 	style
@@ -21,12 +21,16 @@ module.exports.operate = (
 		return newShapes
 	}
 
-	const selectedAttachmentPoints = handlePreOperatorOperand(
-		shapeArray,
-		indexOfLatestOperationResultStart,
-		operation.preOperatorOperand,
-		operation.preOperatorOperandDeterminer,
-		hierarchicalSequenceRepository
+	// const selectedAttachmentPoints = handlePreOperatorOperand(
+	// 	shapeArray,
+	// 	indexOfLatestOperationResultStart,
+	// 	operation.preOperatorOperand,
+	// 	operation.preOperatorOperandDeterminer,
+	// 	hierarchicalSequenceRepository
+	// )
+
+	const selectedAttachmentPoints = selectAttachmentPoints(
+		shapes.getLatestLevel()
 	)
 
 	let lineBuilder = new LineBuilder(style)

@@ -80,6 +80,12 @@ class Shape {
 	getParentId() {
 		return this.getParentId
 	}
+	getType() {
+		return this.type
+	}
+	toString() {
+		return this.type
+	}
 }
 
 module.exports.Shape = Shape
