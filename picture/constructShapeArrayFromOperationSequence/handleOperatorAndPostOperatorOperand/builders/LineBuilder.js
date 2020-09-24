@@ -1,14 +1,15 @@
 const {
 	getRandomIntegerInRangeExcludeMax,
-} = require('../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
-const { Line } = require('../../shapes/Line')
+} = require('../../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
+const { Line } = require('../../../shapes/Line')
 const { ShapeBuilder } = require('./ShapeBuilder')
 
 class LineBuilder extends ShapeBuilder {
 	constructor(style) {
 		super(style)
 		this.length = style.getLength('long')
-		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 2)
+		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 3)
+		this.numberOfAttachmentPoints = 3
 	}
 
 	build() {

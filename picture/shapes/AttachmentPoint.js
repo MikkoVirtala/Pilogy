@@ -37,6 +37,18 @@ class AttachmentPoint {
 	getShapeParentId() {
 		return this.shapeParentId
 	}
+	setAttachmentPointIndex(attachmentPointIndex) {
+		this.attachmentPointIndex = attachmentPointIndex
+	}
+	getAttachmentPointIndex() {
+		return this.attachmentPointIndex
+	}
+	setShapeType(shapeType) {
+		this.shapeType = shapeType
+	}
+	getShapeType() {
+		return this.shapeType
+	}
 }
 
 module.exports.AttachmentPoint = AttachmentPoint

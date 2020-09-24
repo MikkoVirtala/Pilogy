@@ -1,6 +1,6 @@
 const {
 	getRandomIntegerInRangeExcludeMax,
-} = require('../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
+} = require('../../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
 
 class ShapeBuilder {
 	constructor(style) {
@@ -29,6 +29,18 @@ class ShapeBuilder {
 
 	setParentId(parentId) {
 		this.parentId = parentId
+	}
+
+	getAttachmentPointIndex() {
+		return this.attachmentPointIndex
+	}
+
+	setAttachmentPointIndex(attachmentPointIndex) {
+		this.attachmentPointIndex = attachmentPointIndex
+	}
+
+	getNumberOfAttachmentPoints() {
+		return this.numberOfAttachmentPoints
 	}
 }
 

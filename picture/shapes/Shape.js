@@ -27,6 +27,13 @@ class Shape {
 		this.updateAttachmentPointsAfterConnectingAttachmentPointAndPointToAttach()
 		this.calculateNormalAnglesAtAttachmentPoints()
 		this.setShapeIdAndShapeParentIdForAttachmentPoints()
+		this.setShapeTypeAndAttachmentPointIndexForAttachmentPoints()
+	}
+	setShapeTypeAndAttachmentPointIndexForAttachmentPoints() {
+		this.attachmentPoints.forEach((attachmentPoint, index) => {
+			attachmentPoint.setAttachmentPointIndex(index)
+			attachmentPoint.setShapeType(this.type)
+		})
 	}
 	setShapeIdAndShapeParentIdForAttachmentPoints() {
 		this.attachmentPoints.forEach((attachmentPoint) => {

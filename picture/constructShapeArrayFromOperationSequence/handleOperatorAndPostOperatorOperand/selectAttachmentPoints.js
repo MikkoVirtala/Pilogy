@@ -1,99 +1,74 @@
+const {
+	selectAttachmentPointsFromCenterShape,
+} = require('./selectAttachmentPointsFromCenterShape')
+const {
+	arrayHasUnevenNumberOfItems,
+} = require('../../generalHelperFunctions/arrayHasUnevenNumberOfItems')
+
 module.exports.selectAttachmentPoints = (shapes) => {
-	console.log('selectAttachmentPoints: shapes: ', shapes)
-	console.log('shapes.length: ', shapes.length)
-
-	if (shapes.length === 1) {
-		return getAttachmentPointsOfCenterShape(shapes)
-	}
-
 	const selectedAttachmentPoints = []
 	const selectedCounterAttachmentPoints = []
-	const loopLimit = Math.floor(shapes.length / 2)
 
-	for (let i = 0; i < loopLimit; i++) {
-		console.log('shapes: i: ', i)
-		const shape = shapes[i]
-		const attachmentPointsOfShape = shape.getAttachmentPoints()
+	if (shapes.length > 1) {
+		console.log('shapes.length > 1')
+		const loopLimit = Math.floor(shapes.length / 2)
+		for (let i = 0; i < loopLimit; i++) {
+			const shape = shapes[i]
+			const counterShape = shapes[shapes.length - 1 - i]
+			const attachmentPointsOfShape = shape.getAttachmentPoints()
+			const attachmentPointsOfCounterShape = counterShape.getAttachmentPoints()
 
-		for (let j = 0; j < attachmentPointsOfShape.length; j++) {
-			if (Math.random() > 0.5) {
-				console.log('counterShape: ', shapes.length - 1 - i)
-				console.log('attachmentPoint: ', j)
-				const attachmentPoint = attachmentPointsOfShape[j]
-				let counterAttachmentPoint = {}
-				const counterShapeAttachmentPoints = shapes[
-					shapes.length - 1 - i
-				].getAttachmentPoints()
-				if (shape.getType() === 'line') {
-					console.log('counterAttachmentPoint: ', j)
-					counterAttachmentPoint = counterShapeAttachmentPoints[j]
-				} else {
-					console.log(
-						'counterAttachmentPoint: ',
-						counterShapeAttachmentPoints.length - 1 - j
-					)
-					counterAttachmentPoint =
-						counterShapeAttachmentPoints[
-							counterShapeAttachmentPoints.length - 1 - j
+			for (let j = 0; j < attachmentPointsOfShape.length; j++) {
+				if (Math.random() > 0.5) {
+					const attachmentPoint = attachmentPointsOfShape[j]
+					const counterAttachmentPointInSameShape =
+						attachmentPointsOfShape[attachmentPointsOfShape.length - 1 - j]
+					const counterAttachmentPointInCounterShape =
+						attachmentPointsOfCounterShape[
+							attachmentPointsOfCounterShape.length - 1 - j
 						]
+					const counterAttachmentPointInDifferentShapeOfCounterAttachmentPointInSameShape =
+						attachmentPointsOfCounterShape[j]
+
+					if (shape.getType() === 'line') {
+						selectedCounterAttachmentPoints.unshift(
+							counterAttachmentPointInDifferentShapeOfCounterAttachmentPointInSameShape
+						)
+					} else if (shape.getType() === 'triangle') {
+						// shape.getType() === 'triangle' && (j === 2 || j === 4)
+						console.log('1. meni')
+						selectedAttachmentPoints.push(attachmentPoint)
+						selectedCounterAttachmentPoints.unshift(
+							counterAttachmentPointInCounterShape
+						)
+						selectedAttachmentPoints.push(counterAttachmentPointInSameShape)
+						selectedCounterAttachmentPoints.unshift(
+							counterAttachmentPointInDifferentShapeOfCounterAttachmentPointInSameShape
+						)
+					} else {
+						selectedCounterAttachmentPoints.unshift(
+							counterAttachmentPointInCounterShape
+						)
+					}
 				}
-				selectedAttachmentPoints.push(attachmentPoint)
-				selectedCounterAttachmentPoints.unshift(counterAttachmentPoint)
 			}
 		}
 	}
 
-	if (unevenNumberOfItems(shapes)) {
+	if (arrayHasUnevenNumberOfItems(shapes)) {
+		const selectedAttachmentPointsFromCenterShape = selectAttachmentPointsFromCenterShape(
+			shapes[Math.floor(shapes.length / 2)].getAttachmentPoints()
+		)
 		selectedAttachmentPoints.push(
-			...selectAttachmentPointsFromCenterShape(
-				getAttachmentPointsOfCenterShape(shapes)
-			)
+			...selectedAttachmentPointsFromCenterShape.selectedAttachmentPoints
+		)
+		selectedCounterAttachmentPoints.unshift(
+			...selectedAttachmentPointsFromCenterShape.selectedCounterAttachmentPoints
 		)
 	}
 
-	selectedAttachmentPoints.push(...selectedCounterAttachmentPoints)
-
-	return selectedAttachmentPoints
-}
-
-const unevenNumberOfItems = (arrayOfItems) => {
-	return arrayOfItems.length % 2 === 1
-}
-
-const getAttachmentPointsOfCenterShape = (shapes) => {
-	return shapes[Math.floor(shapes.length / 2)].getAttachmentPoints()
-}
-
-const getCenterAttachmentPoint = (attachmentPoints) => {
-	return attachmentPoints[Math.floor(attachmentPoints.length / 2)]
-}
-
-const selectAttachmentPointsFromCenterShape = (
-	attachmentPointsOfCenterShape
-) => {
-	const selectedAttachmentPointsOfCenterShape = []
-	const loopLimit = Math.floor(attachmentPointsOfCenterShape.length / 2)
-
-	for (let k = 0; k < loopLimit; k++) {
-		if (Math.random() > 0.5) {
-			selectedAttachmentPointsOfCenterShape.push(
-				attachmentPointsOfCenterShape[k]
-			)
-			selectedAttachmentPointsOfCenterShape.push(
-				attachmentPointsOfCenterShape[
-					attachmentPointsOfCenterShape.length - 1 - k
-				]
-			)
-		}
+	return {
+		selectedAttachmentPoints,
+		selectedCounterAttachmentPoints,
 	}
-
-	if (unevenNumberOfItems(attachmentPointsOfCenterShape)) {
-		if (Math.random() > 0.5) {
-			selectedAttachmentPointsOfCenterShape.push(
-				getCenterAttachmentPoint(attachmentPointsOfCenterShape)
-			)
-		}
-	}
-
-	return selectedAttachmentPointsOfCenterShape
 }

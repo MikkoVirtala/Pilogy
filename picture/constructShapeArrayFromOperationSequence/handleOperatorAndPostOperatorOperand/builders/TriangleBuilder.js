@@ -1,8 +1,8 @@
-const { Triangle } = require('../../shapes/Triangle')
+const { Triangle } = require('../../../shapes/Triangle')
 const { ShapeBuilder } = require('./ShapeBuilder')
 const {
 	getRandomIntegerInRangeExcludeMax,
-} = require('../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
+} = require('../../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
 
 class TriangleBuilder extends ShapeBuilder {
 	constructor(style) {
@@ -12,6 +12,7 @@ class TriangleBuilder extends ShapeBuilder {
 		this.fill = style.getColor()
 		this.fillOpacity = style.getOpacity()
 		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 7)
+		this.numberOfAttachmentPoints = 7
 	}
 
 	build() {

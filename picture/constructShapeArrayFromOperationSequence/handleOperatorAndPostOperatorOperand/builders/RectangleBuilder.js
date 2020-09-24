@@ -1,8 +1,8 @@
-const { Rectangle } = require('../../shapes/Rectangle')
+const { Rectangle } = require('../../../shapes/Rectangle')
 const { ShapeBuilder } = require('./ShapeBuilder')
 const {
 	getRandomIntegerInRangeExcludeMax,
-} = require('../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
+} = require('../../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
 
 class RectangleBuilder extends ShapeBuilder {
 	constructor(style) {
@@ -11,7 +11,8 @@ class RectangleBuilder extends ShapeBuilder {
 		this.height = style.getLength('short')
 		this.fill = style.getColor()
 		this.fillOpacity = style.getOpacity()
-		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 8)
+		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 9)
+		this.numberOfAttachmentPoints = 9
 	}
 
 	build() {

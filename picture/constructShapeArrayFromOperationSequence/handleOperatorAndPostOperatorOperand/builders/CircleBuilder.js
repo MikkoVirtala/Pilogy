@@ -1,7 +1,7 @@
 const {
 	getRandomIntegerInRangeExcludeMax,
-} = require('../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
-const { Circle } = require('../../shapes/Circle')
+} = require('../../../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
+const { Circle } = require('../../../shapes/Circle')
 const { ShapeBuilder } = require('./ShapeBuilder')
 
 class CircleBuilder extends ShapeBuilder {
@@ -10,7 +10,8 @@ class CircleBuilder extends ShapeBuilder {
 		this.r = style.getLength('short')
 		this.fill = style.getColor()
 		this.fillOpacity = style.getOpacity()
-		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 4)
+		this.attachmentPointIndex = getRandomIntegerInRangeExcludeMax(0, 5)
+		this.numberOfAttachmentPoints = 5
 	}
 
 	build() {

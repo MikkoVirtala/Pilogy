@@ -27,7 +27,6 @@ module.exports.createPicture = (maxNumberOfShapesInPicture) => {
 		)
 		shapes = constructShapeArrayFromOperationSequence(
 			operationSequence,
-			hierarchicalSequenceRepository,
 			maxNumberOfShapesInPicture
 		)
 		console.log('shapes.length: ', shapes.length)

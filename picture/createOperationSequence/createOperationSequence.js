@@ -68,15 +68,22 @@ module.exports.createOperationSequence = (operationSequenceLength) => {
 			preOperatorOperand: 'latestOperationResult',
 			preOperatorOperandDeterminer: 'ofSameParent',
 			operator: 'add',
-			postOperatorOperand: 'line',
+			postOperatorOperand: 'triangle',
 			resultIsVisible: true,
 		},
 		{
 			preOperatorOperand: 'latestOperationResult',
 			preOperatorOperandDeterminer: 'ofSameParent',
 			operator: 'add',
-			postOperatorOperand: 'rectangle',
+			postOperatorOperand: 'triangle',
 			resultIsVisible: true,
 		},
+		// {
+		// 	preOperatorOperand: 'latestOperationResult',
+		// 	preOperatorOperandDeterminer: 'ofSameParent',
+		// 	operator: 'add',
+		// 	postOperatorOperand: 'rectangle',
+		// 	resultIsVisible: true,
+		// },
 	]
 }
