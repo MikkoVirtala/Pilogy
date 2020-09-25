@@ -8,6 +8,8 @@ const {
 	getRandomElementInArray,
 } = require('../generalHelperFunctions/getRandomElementInArray')
 
+const shapeTypes = ['circle', 'line', 'rectangle', 'triangle']
+
 const numberOfAttachmentPointsInShapes = {
 	circle: 5,
 	line: 3,
@@ -65,7 +67,7 @@ const addSequence = (length, previousSequence) => {
 	const sequence = []
 	const lastItemOfPreviousSequence =
 		previousSequence[previousSequence.length - 1]
-	const previousItemType = lastItemOfPreviousSequence[1]
+	const previousItemType = lastItemOfPreviousSequence.getShapeType()
 
 	for (let i = 0; i < length; i++) {
 		const typeOfNewShape = getRandomElementInArray(
@@ -83,6 +85,16 @@ const addSequence = (length, previousSequence) => {
 	}
 
 	return sequence
+}
+
+const getShape = (previousShape) => {
+	return
+	new ShapeInfo(
+		getRandomElementInArray(shapeTypes),
+		getRandomIntegerInRangeExcludeMax(0, 360),
+		getIndexOfAttachmentPoint(previousShape.getShapeType()),
+		getIndexOfAttachmentPoint(typeOfNewShape)
+	)
 }
 
 const addCounterSequence = (sequence) => {}
