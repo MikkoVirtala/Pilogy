@@ -1,107 +1,110 @@
 const {
-	getRandomElementInArray,
+  getRandomElementInArray,
 } = require('../generalHelperFunctions/getRandomElementInArray')
 const {
-	getRandomIntegerInRangeExcludeMax,
+  getRandomIntegerInRangeExcludeMax,
 } = require('../generalHelperFunctions/getRandomIntegerInRangeExcludeMax')
-const {
-	getRandomElementInArray,
-} = require('../generalHelperFunctions/getRandomElementInArray')
 
 const shapeTypes = ['circle', 'line', 'rectangle', 'triangle']
 
 const numberOfAttachmentPointsInShapes = {
-	circle: 5,
-	line: 3,
-	rectangle: 9,
-	triangle: 7,
+  circle: 5,
+  line: 3,
+  rectangle: 9,
+  triangle: 7,
 }
 
-class ShapeInfo {
-	constructor(
-		shapeType,
-		rotationInDegrees,
-		indexOfAttachmentPoint,
-		indexOfPointToAttach
-	) {
-		this.shapeType = shapeType
-		this.rotationInDegrees = rotationInDegrees
-		this.indexOfAttachmentPoint = indexOfAttachmentPoint
-		this.indexOfPointToAttach = indexOfPointToAttach
-	}
+class InfoForCreatingShape {
+  constructor(
+    shapeType,
+    rotationInDegrees,
+    indexOfAttachmentPoint,
+    indexOfPointToAttach
+  ) {
+    this.shapeType = shapeType
+    this.rotationInDegrees = rotationInDegrees
+    this.indexOfAttachmentPoint = indexOfAttachmentPoint
+    this.indexOfPointToAttach = indexOfPointToAttach
+  }
 
-	getShapeType() {
-		return this.shapeType
-	}
-	getRotationInDegrees() {
-		return this.rotationInDegrees
-	}
-	getIndexOfAttachmentPoint() {
-		return this.indexOfAttachmentPoint
-	}
-	getIndexOfPointToAttach() {
-		return this.indexOfPointToAttach
-	}
+  getShapeType() {
+    return this.shapeType
+  }
+  getRotationInDegrees() {
+    return this.rotationInDegrees
+  }
+  getIndexOfAttachmentPoint() {
+    return this.indexOfAttachmentPoint
+  }
+  getIndexOfPointToAttach() {
+    return this.indexOfPointToAttach
+  }
 }
 
-module.exports.createOperationSequence2 = () => {
-	const sequenes = []
-	sequences.push(addFirstSequence())
-	sequences.push(addSequence(5))
+const createOperationSequence2 = () => {
+  const sequences = []
+  sequences.push(addFirstInfoForCreatingShape())
+  sequences.push(addSequenceOfInfosForCreatingShapes(5, sequences[0]))
 
-	return sequences
+  console.log('sequences: ', sequences)
+  return sequences
 }
 
-const addFirstSequence = () => {
-	firstSequence = []
-	firstSequence.push(
-		new ShapeInfo(
-			getRandomElementInArray(Object.keys(numberOfAttachmentPointsInShapes)),
-			getRandomIntegerInRangeExcludeMax(0, 360)
-		)
-	)
-	return firstSequence
+const addFirstInfoForCreatingShape = () => {
+  let firstSequence = []
+  firstSequence.push(
+    new InfoForCreatingShape(
+      getRandomElementInArray(Object.keys(numberOfAttachmentPointsInShapes)),
+      getRandomIntegerInRangeExcludeMax(0, 360)
+    )
+  )
+  return firstSequence
 }
 
-const addSequence = (length, previousSequence) => {
-	const sequence = []
-	const lastItemOfPreviousSequence =
-		previousSequence[previousSequence.length - 1]
-	const previousItemType = lastItemOfPreviousSequence.getShapeType()
+const addSequenceOfInfosForCreatingShapes = (
+  length,
+  previousSequenceOfInfosForCreatingShapes
+) => {
+  const sequenceOfInfosForCreatingShapes = []
 
-	for (let i = 0; i < length; i++) {
-		const typeOfNewShape = getRandomElementInArray(
-			Object.keys(numberOfAttachmentPointsInShapes)
-		)
-		sequence.push(
-			new ShapeInfo(
-				typeOfNewShape,
-				getRandomIntegerInRangeExcludeMax(0, 360),
-				getIndexOfAttachmentPoint(previousItemType),
-				getIndexOfAttachmentPoint(typeOfNewShape)
-			)
-		)
-		previousItemType = newItem[1]
-	}
+  sequenceOfInfosForCreatingShapes.push(
+    getInfoForCreatingShape(
+      previousSequenceOfInfosForCreatingShapes[
+        previousSequenceOfInfosForCreatingShapes.length - 1
+      ]
+    )
+  )
 
-	return sequence
+  for (let i = 1; i < length; i++) {
+    sequenceOfInfosForCreatingShapes.push(
+      getShape(
+        sequenceOfInfosForCreatingShapes[
+          sequenceOfInfosForCreatingShapes.length - 1
+        ]
+      )
+    )
+  }
+
+  return sequence
 }
 
-const getShape = (previousShape) => {
-	return
-	new ShapeInfo(
-		getRandomElementInArray(shapeTypes),
-		getRandomIntegerInRangeExcludeMax(0, 360),
-		getIndexOfAttachmentPoint(previousShape.getShapeType()),
-		getIndexOfAttachmentPoint(typeOfNewShape)
-	)
+const getInfoForCreatingShape = (previousShape) => {
+  const typeOfShape = getRandomElementInArray(shapeTypes)
+  return new InfoForCreatingShape(
+    typeOfShape,
+    getRandomIntegerInRangeExcludeMax(0, 360),
+    getIndexOfAttachmentPoint(previousShape.getShapeType()),
+    getIndexOfAttachmentPoint(typeOfShape)
+  )
 }
 
 const addCounterSequence = (sequence) => {}
 
 const getIndexOfAttachmentPoint = (shapeToAttachNewShape) => {
-	return getRandomIntegerInRangeExcludeMax(
-		0,
-		numberOfAttachmentPointsInShapes[shapeToAttachNewShape]
-	)
+  return getRandomIntegerInRangeExcludeMax(
+    0,
+    numberOfAttachmentPointsInShapes[shapeToAttachNewShape]
+  )
 }
+
+createOperationSequence2()
