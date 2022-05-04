@@ -10,16 +10,9 @@ class Line extends Shape {
 		rotationInDegrees,
 		pointToAttach,
 		attachmentPointIndex,
-		visible,
-		parentId
+		visible
 	) {
-		super(
-			rotationInDegrees,
-			pointToAttach,
-			attachmentPointIndex,
-			visible,
-			parentId
-		)
+		super(rotationInDegrees, pointToAttach, attachmentPointIndex, visible)
 		this.type = 'line'
 		this.length = length
 		this.stroke = stroke

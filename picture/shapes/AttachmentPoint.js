@@ -16,12 +16,6 @@ class AttachmentPoint {
 	setY(y) {
 		this.y = y
 	}
-	setShapeId(shapeId) {
-		this.shapeId
-	}
-	setShapeParentId(shapeParentId) {
-		this.shapeParentId
-	}
 	getX() {
 		return this.x
 	}
@@ -30,24 +24,6 @@ class AttachmentPoint {
 	}
 	getNormalAngle() {
 		return this.normalAngle
-	}
-	getShapeId() {
-		return this.shapeId
-	}
-	getShapeParentId() {
-		return this.shapeParentId
-	}
-	setAttachmentPointIndex(attachmentPointIndex) {
-		this.attachmentPointIndex = attachmentPointIndex
-	}
-	getAttachmentPointIndex() {
-		return this.attachmentPointIndex
-	}
-	setShapeType(shapeType) {
-		this.shapeType = shapeType
-	}
-	getShapeType() {
-		return this.shapeType
 	}
 }
 

@@ -1,4 +1,4 @@
-const { getInitializingShape } = require('../getInitializingShape')
+const { getInitializingShape } = require('../RootShapeBuilder')
 const { LineBuilder } = require('./builders/LineBuilder')
 const { RectangleBuilder } = require('./builders/RectangleBuilder')
 const { CircleBuilder } = require('./builders/CircleBuilder')

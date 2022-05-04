@@ -12,16 +12,9 @@ class Circle extends Shape {
 		rotationInDegrees,
 		pointToAttach,
 		attachmentPointIndex,
-		visible,
-		parentId
+		visible
 	) {
-		super(
-			rotationInDegrees,
-			pointToAttach,
-			attachmentPointIndex,
-			visible,
-			parentId
-		)
+		super(rotationInDegrees, pointToAttach, attachmentPointIndex, visible)
 		this.type = 'circle'
 		this.r = r
 		this.fill = fill

@@ -6,40 +6,20 @@ const {
 const { getAverage } = require('../generalHelperFunctions/getAverage')
 
 class Shape {
-	constructor(
-		rotationInDegrees,
-		pointToAttach,
-		attachmentPointIndex,
-		visible,
-		parentId
-	) {
+	constructor(rotationInDegrees, pointToAttach, attachmentPointIndex, visible) {
 		this.id = uuidv1()
 		this.rotationInDegrees = normalizeDegreesToBetween0And360(rotationInDegrees)
 		this.pointToAttach = pointToAttach
 		this.attachmentPointIndex = attachmentPointIndex
 		this.attachmentPoints = []
 		this.visible = visible
-		this.parentId = parentId
+		this.children = []
 	}
 	calculateAttachmentPoints() {
 		this.calculateInitialAttachmentPoints()
 		this.updateAttachmentPointsAfterRotation()
 		this.updateAttachmentPointsAfterConnectingAttachmentPointAndPointToAttach()
 		this.calculateNormalAnglesAtAttachmentPoints()
-		this.setShapeIdAndShapeParentIdForAttachmentPoints()
-		this.setShapeTypeAndAttachmentPointIndexForAttachmentPoints()
-	}
-	setShapeTypeAndAttachmentPointIndexForAttachmentPoints() {
-		this.attachmentPoints.forEach((attachmentPoint, index) => {
-			attachmentPoint.setAttachmentPointIndex(index)
-			attachmentPoint.setShapeType(this.type)
-		})
-	}
-	setShapeIdAndShapeParentIdForAttachmentPoints() {
-		this.attachmentPoints.forEach((attachmentPoint) => {
-			attachmentPoint.setShapeId(this.id)
-			attachmentPoint.setShapeParentId(this.parentId)
-		})
 	}
 	updateAttachmentPointsAfterRotation() {
 		const rotationInRadians = convertDegreesToRadians(this.rotationInDegrees)
@@ -84,11 +64,14 @@ class Shape {
 	getId() {
 		return this.id
 	}
-	getParentId() {
-		return this.getParentId
-	}
 	getType() {
 		return this.type
+	}
+	getChildren() {
+		return this.children
+	}
+	addChild(child) {
+		this.children.push(child)
 	}
 	toString() {
 		return this.type

@@ -13,16 +13,9 @@ class Triangle extends Shape {
 		rotationInDegrees,
 		pointToAttach,
 		attachmentPointIndex,
-		visible,
-		parentId
+		visible
 	) {
-		super(
-			rotationInDegrees,
-			pointToAttach,
-			attachmentPointIndex,
-			visible,
-			parentId
-		)
+		super(rotationInDegrees, pointToAttach, attachmentPointIndex, visible)
 		this.type = 'triangle'
 		this.width = width
 		this.height = height
